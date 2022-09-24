@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const AUTH_API = axios.create({ baseURL: 'http://localhost:5000/api/v1/auth' });
+const AUTH_API = axios.create({ baseURL: 'https://tailus-api-production.up.railway.app/api/v1/auth' });
 
 export const signUpUserApi = (userData) => AUTH_API.post('/signup', userData);
 export const otpVerificationApi = (data) => AUTH_API.post('/verifyOtp',data);
