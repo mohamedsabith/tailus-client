@@ -25,9 +25,9 @@ const App = () => {
             <Route path="/" element={<SigninForm />} />
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/otpverify" element={<OtpVerify />} />
+            <Route path="/forgotPassword" element={<ForgetPassword />} />
+            <Route path="/resetPassword/:token" element={<ResetPassword />} />
           </Route>
-          <Route path="/forgotPassword" element={<ForgetPassword />} />
-          <Route path="/resetPassword/:token" element={<ResetPassword />} />
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Home />} />
             <Route path="/profile" element={<ProfilePage />} />
