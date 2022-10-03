@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone';
 import { Button } from '@material-tailwind/react';
-import {gapi} from 'gapi-script'
+import { gapi } from 'gapi-script'
 import { toast } from 'react-toastify';
 import { GoogleLogin } from 'react-google-login';
 import { register, reset, googleSignup } from '../../features/auth/authSlice';
@@ -105,7 +105,7 @@ const SignupForm = () => {
 
   return (
     <React.Fragment>
-      <div style={{}}  className="2xl:container h-screen m-auto">
+      <div  className="2xl:container h-screen m-auto">
         <div hidden className="fixed inset-0 w-7/12 lg:block mt-20">
           <img src={signupImage} alt="sideimage" />
         </div>

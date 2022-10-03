@@ -27,7 +27,7 @@ export const register = createAsyncThunk(
       }
 
       if (response.data) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("user", JSON.stringify(response.data.userDetails));
       }
 
       return response.data;
@@ -45,9 +45,9 @@ export const googleSignup = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await api.googleSignupApi(data);
-
+      console.log(response);
       if (response.data) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("user", JSON.stringify(response.data.userDetails));
         localStorage.setItem("token", response.data.token);
       }
 
@@ -68,7 +68,7 @@ export const verifyOtp = createAsyncThunk(
       const response = await api.otpVerificationApi(data);
 
       if (response.data) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("user", JSON.stringify(response.data.userDetails));
         localStorage.setItem("token", response.data.token);
       }
       return response.data;
@@ -88,7 +88,7 @@ export const login = createAsyncThunk(
       const response = await api.signInUserApi(userData);
 
       if (response.data) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("user", JSON.stringify(response.data.userDetails));
         localStorage.setItem("token", response.data.token);
       }
 
@@ -168,13 +168,13 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.active = true;
-        state.user = payload;
+        state.user = payload.userDetails;
       })
-      .addCase(verifyOtp.rejected, (state, action) => {
+      .addCase(verifyOtp.rejected, (state, {payload}) => {
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.message = action.payload;
+        state.message = payload;
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true;
@@ -182,7 +182,7 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = payload;
+        state.user = payload.userDetails;
         state.active = true;
       })
       .addCase(login.rejected, (state, action) => {
@@ -223,7 +223,7 @@ export const authSlice = createSlice({
       .addCase(googleSignup.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = payload;
+        state.user = payload.userDetails;
         state.active = true;
       })
       .addCase(googleSignup.rejected, (state, action) => {

@@ -2,6 +2,12 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 module.exports = withMT({
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
+    screens: {
+      mobile: '440px',
+      tablet: '640px',
+      laptop: '1060px',
+      desktop: '1320px',
+    },
     extend: {
       colors: {
         primary: {

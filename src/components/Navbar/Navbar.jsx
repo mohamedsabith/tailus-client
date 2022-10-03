@@ -1,5 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux"
 import { Popover, Transition, Menu } from "@headlessui/react";
 import {
   MenuIcon,
@@ -45,9 +46,11 @@ export default function Navbar() {
     },
   ];
 
+  const { user } = useSelector((state)=>state.auth)
+
   return (
     <>
-      <Popover className="bg-white sticky top-0">
+      <Popover className="bg-white  top-0 sticky">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -87,8 +90,8 @@ export default function Navbar() {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
+                      src={user.avatar}
+                      alt="user avatar"
                     />
                   </Menu.Button>
                 </div>

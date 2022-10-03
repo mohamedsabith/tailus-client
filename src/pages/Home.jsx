@@ -1,35 +1,34 @@
-import React, { useState } from "react";
-import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
+import React,{useEffect} from 'react';
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import Navbar from '../components/Navbar/Navbar';
+import Posts from '../components/Feed/Posts';
+import Publisher from '../components/Publisher/Publisher';
+import Layout from '../components/Layout/Layout';
+import Trends from '../components/Trends/Trends';
 
-import Sidebar from "../components/SideBar/SideBar";
-import Feed from "../components/Feed/Feed";
-import Rightbar from "../components/RightBar/RightBar";
-import Navbar from "../components/Navbar/Navbar";
-import Add from "../components/Add/Add";
-
-function Home() {
-  const [mode, setMode] = useState("light");
-
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
+const Home = () => {
+  const Navigate = useNavigate()
+  const {user} = useSelector((state)=>state.auth)
+  useEffect(()=>{
+   if(!user){
+    Navigate("/")
+   }
+  },[Navigate, user])
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
-        <Box bgcolor={"background.default"} color={"text.primary"}>
-          <Navbar />
-          <Stack direction="row" spacing={2} justifyContent="space-between">
-            <Sidebar setMode={setMode} mode={mode} />
-            <Feed />
-            <Rightbar />
-          </Stack>
-          <Add />
-        </Box>
-      </ThemeProvider>
+      <Navbar />
+      <Layout>
+        <div className="max-w-[37.5rem] border-x-[1px]">
+          <Publisher />
+          <Posts />
+        </div>
+        <div className="laptop:block hidden px-8 space-y-2">
+          <Trends />
+        </div>
+      </Layout>
     </>
   );
-}
+};
 
 export default Home;

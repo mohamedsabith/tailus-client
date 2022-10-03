@@ -1,102 +1,36 @@
+import React from 'react';
+import Path from './Path';
+import { HomeIcon } from '@heroicons/react/solid';
+import { Button } from "@material-tailwind/react";
 import {
-  AccountBox,
-  Article,
-  Group,
-  Home,
-  ModeNight,
-  Person,
-  Settings,
-  Storefront,
-} from "@mui/icons-material";
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Switch,
-} from "@mui/material";
-import React from "react";
+  HashtagIcon,
+  BellIcon,
+  MailIcon,
+  BookmarkIcon,
+  ViewListIcon,
+  UserIcon,
+  DotsCircleHorizontalIcon,
+} from '@heroicons/react/outline';
 
-const Sidebar = ({ mode, setMode }) => {
+const Sidebar = () => {
   return (
-    <Box
-      flex={1}
-      p={4}
-      sx={{ display: { xs: "none", sm: "block", marginTop: 16 } }}
-    >
-      <Box position="fixed">
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#home">
-              <ListItemIcon>
-                <Home />
-              </ListItemIcon>
-              <ListItemText primary="Homepage" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemIcon>
-                <Article />
-              </ListItemIcon>
-              <ListItemText primary="Pages" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemIcon>
-                <Group />
-              </ListItemIcon>
-              <ListItemText primary="Groups" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemIcon>
-                <Storefront />
-              </ListItemIcon>
-              <ListItemText primary="Marketplace" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemIcon>
-                <Person />
-              </ListItemIcon>
-              <ListItemText primary="Friends" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemIcon>
-                <Settings />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemIcon>
-                <AccountBox />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemIcon>
-                <ModeNight />
-              </ListItemIcon>
-              <Switch
-                onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
-              />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Box>
-    </Box>
+    <>
+      <nav className="flex-col gap-5 px-2 py-4 min-h-screen justify-between items-center hidden tablet:flex">
+        <div className="flex flex-col gap-5 items-center desktop:items-stretch w-full">
+          <div className="space-y-3">
+            <Path Icon={HomeIcon} name="Home" active={true} />
+            <Path Icon={HashtagIcon} name="Explore" active={false} />
+            <Path Icon={BellIcon} name="Notifications" active={false} />
+            <Path Icon={MailIcon} name="Messages" active={false} />
+            <Path Icon={BookmarkIcon} name="Bookmarks" active={false} />
+            <Path Icon={ViewListIcon} name="Lists" active={false} />
+            <Path Icon={UserIcon} name="Profile" active={false} />
+            <Path Icon={DotsCircleHorizontalIcon} name="More" active={false} />
+          </div>
+          <Button variant="gradient" className=''>Logout</Button>
+        </div>
+      </nav>
+    </>
   );
 };
 

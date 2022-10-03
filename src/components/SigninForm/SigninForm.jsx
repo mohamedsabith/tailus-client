@@ -73,7 +73,7 @@ const SigninForm = () => {
     },
   });
   return (
-    <React.Fragment>
+    <>
       <div className="2xl:container h-screen m-auto">
         <div hidden className="fixed inset-0 w-7/12 lg:block">
           <img src={signinImage} alt="sideimage" />
@@ -235,7 +235,7 @@ const SigninForm = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

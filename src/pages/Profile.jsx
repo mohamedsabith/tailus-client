@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import Navbar from "../components/Navbar/Navbar";
-import ProfilePage from "../components/ProfilePage/ProfilePage";
+import Navbar from '../components/Navbar/Navbar';
+import ProfilePage from '../components/ProfilePage/ProfilePage';
 
 const Profile = () => {
   return (
